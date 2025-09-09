@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Passa a Bola — MVP Navegável</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="logo"><img src="images/logo.png" alt="Passa a Bola Logo"></div>
+      <div>
+        <h1>Passa a Bola</h1>
+        <div class="small">MVP navegável — cadastro, jogos, confirmações</div>
+      </div>
+    </div>
+
+    <nav>
+      <button class="link" data-nav="home">Home</button>
+      <button class="link" data-nav="criar">Criar Jogo</button>
+      <button class="link" data-nav="meus-jogos">Meus Jogos</button>
+      <button class="link" data-nav="perfil">Perfil</button>
+      <button id="authBtn" class="cta">Entrar / Cadastrar</button>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <section id="view-area">
+
+      <!-- Home -->
+      <div id="home" class="card view">
+        <h2>Próximos Jogos</h2>
+        <p class="small">Lista com jogos criados — confirme presença para participar.</p>
+        <div class="games-list" id="gamesList"></div>
+      </div>
+
+      <!-- Criar Jogo -->
+      <div id="criar" class="card view" style="display:none">
+        <h2>Criar Jogo</h2>
+        <form id="createGameForm">
+          <div class="row">
+            <div class="col"><input required name="title" placeholder="Nome do jogo"></div>
+            <div class="col"><input required type="date" name="date"></div>
+          </div>
+          <div class="row">
+            <div class="col"><input required type="time" name="time"></div>
+            <div class="col"><input required name="location" placeholder="Local"></div>
+          </div>
+          <div class="row">
+            <div class="col"><input required type="number" name="slots" placeholder="Vagas" min="1" value="10"></div>
+            <div class="col">
+              <select name="level">
+                <option>Aberto</option>
+                <option>Treino</option>
+                <option>Amistoso</option>
+              </select>
+            </div>
+          </div>
+          <input name="image" type="url" placeholder="URL da imagem do local (opcional)">
+          <img id="previewImg" src="" alt="Pré-visualização" style="display:none;">
+          <textarea name="notes" rows="3" placeholder="Observações (opcional)"></textarea>
+          <div style="display:flex;gap:10px;justify-content:flex-end">
+            <button type="submit" class="cta">Criar Jogo</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Meus Jogos -->
+      <div id="meus-jogos" class="card view" style="display:none">
+        <h2>Meus Jogos</h2>
+        <div id="myGamesList"></div>
+      </div>
+
+      <!-- Perfil -->
+      <div id="perfil" class="card view" style="display:none">
+        <h2>Perfil</h2>
+        <div class="profile">
+          <div class="avatar" id="avatarLetter"><img src="images/default-avatar.png" alt="Avatar do Usuário"></div>
+          <div>
+            <strong id="userName">Usuário</strong><br>
+            <span id="userEmail">email@exemplo.com</span>
+          </div>
+        </div>
+        <form id="profileForm">
+          <input name="name" placeholder="Nome">
+          <input name="email" type="email" placeholder="E-mail">
+          <input name="avatar" type="url" placeholder="URL do avatar">
+          <button type="submit" class="cta">Atualizar Perfil</button>
+        </form>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<!-- Modal de Login -->
+<div class="modal" id="authModal">
+  <div class="modal-content">
+    <span class="close" id="closeAuth">&times;</span>
+    <h3>Entrar / Cadastrar</h3>
+    <form id="authForm">
+      <input name="name" placeholder="Nome" required>
+      <input name="email" type="email" placeholder="E-mail" required>
+      <button type="submit" class="cta">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
